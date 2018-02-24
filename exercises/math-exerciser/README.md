@@ -1,19 +1,11 @@
----
-layout: page
-title: Math Exerciser
-permalink: /exercises/math-exerciser/
-type: exercise
-tags: 
- - avancerad
- - funktioner
-toc: true
----
+{% if page.proglang == "python" %}
 ![solution](https://media.githubusercontent.com/media/ahnlabb/schoolprog-external/master/math-exerciser.gif)
+{% endif %}
 
 ## Denna övning innehåller:
 
-- Strängar
-- Listor [(exempel)](https://repl.it/@ahnlabb/RowdyOliveWeevil)
+- Strängar {% if page.proglang == "python" %}
+- Listor [(exempel)](https://repl.it/@ahnlabb/RowdyOliveWeevil) {% endif %}
 - Loopar
 - Slump
 
@@ -42,10 +34,14 @@ Vi vill göra en lista med de frågor vi vill öva på och en lista med frågorn
 svar så att vi kan kolla att användaren skrivit rätt.
 I python kan vi skriva de två listorna så här:
 
-```python
+``` {{ page.proglang }} {% case page.proglang %}
+{% when "python" %}
 questions = ["Vad är kunskapens moder?", "Vilken funktion används i python för att skriva ut text i kommandotolken?"]
 answers = ["repetition", "print"]
-```
+{% when "scala" %}
+var questions = List("Vad är kunskapens moder?", "Vilken funktion används i scala för att skriva ut text i kommandotolken?")
+var answers = List("repetition", "println")
+{% endcase %} ```
 
 Första frågan i `questions` listan är "Vad är kunskapens moder?" och svaret på den
 frågan hittar vi först i `answers` listan: "repetition".
@@ -58,7 +54,6 @@ kan bli väldigt jobbigt att skriva alla matteuppgifter du vill öva på. Vi kan
 använda programmeringsknep för att göra det lättare! Om du vill öva på femmans
 multiplikationstabell kan du lägga till alla frågor
 
-```python
-for i in range(1, 11):
-    questions.add(('Vad är "5 * {}"?'.format(i), 5 * i))
+``` {{ page.proglang }}
+{% include_relative 1.{{ page.ext }} %}
 ```
