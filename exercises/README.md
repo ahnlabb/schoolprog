@@ -10,7 +10,7 @@ Här är uppgifterna vi börjat jobba på hittils. De kommer i blandad ordning s
 <ul>
 {% assign sitepages = site.pages | sort: 'title' %}
 {% for sitepage in sitepages %}
-  {% if sitepage.type == 'exercise' %}
+  {% if sitepage.type == 'exercise' and sitepage.state != 'draft' %}
     <li>
     <a href="{{ site.baseurl }}{{ sitepage.url }}">{{ sitepage.title }}</a>
 
